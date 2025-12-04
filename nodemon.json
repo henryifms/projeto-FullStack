@@ -2,8 +2,8 @@
   "execMap": {
     "js": "node --experimental-specifier-resolution=node --no-warnings"
   },
-  "watch": ["src/"],
-  "ext": "js,json",
+  "watch": ["src/", "views/"],
+  "ext": "js,json,html",
   "ignore": ["node_modules/"],
   "legacyWatch": true,
   "pollingInterval": 1000
