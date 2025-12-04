@@ -1,4 +1,4 @@
-// import * as Yup from "yup";
+import * as Yup from "yup";
 import { Op } from "sequelize";
 import { parseISO } from "date-fns";
 import User from "../models/User.js";
@@ -94,10 +94,27 @@ class UsersController {
 
     return res.json({ id, name, email, createdAt, updatedAt });
   }
-  // async create(req, res) {
-  //   const schema = Yup.object().shape({
-  //     name: Yup
-  //   });
-  // }
+  async create(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      email: Yup.string().email().required(),
+      password: Yup.string().required().min(8),
+      passwordConfirmation: Yup.string().when("password", (password, field) => {
+        password ? field.required().oneOf([Yup.ref("password")]) : field;
+      }),
+    });
+
+    try {
+      await schema.validate(req.body, { abortEarly: false });
+    } catch (err) {
+      console.log(err.errors);
+      return res.status(400).json({ error: err.errors });
+    }
+
+    const { id, name, email, updatedAt, createdAt } = await User.create(
+      req.body
+    );
+    return res.status(201).json({ id, name, email, updatedAt, createdAt });
+  }
 }
 export default new UsersController();

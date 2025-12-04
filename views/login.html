@@ -15,10 +15,62 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="shortcut icon" href="/assets/logo.ico" type="image/x-icon">
   </head>
-<body class="d-flex justify-content-center align-items-center">
-  <main class="w-50 h-75 bg-dark rounded">
-    <form action="/users/1" method="get"></form>
-  </main>
-  <script src="/js/loginRequest.js"></script>
-</body>
+  <body class="bg-light d-flex justify-content-center align-items-center vh-100">
+    <main class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+      <h1 class="h4 text-center mb-4">Entrar na conta</h1>
+
+      <form action="/users/1" method="get">
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="nome@exemplo.com"
+            required
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Seu nome"
+            required
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+          Entrar
+        </button>
+
+        <div class="text-center mt-3">
+          <small class="text-muted">
+            <a href="/register" class="text-decoration-none">Cadastre-se</a>
+          </small>
+        </div>
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="/js/loginRequest.js"></script>
+  </body> 
 </html>
